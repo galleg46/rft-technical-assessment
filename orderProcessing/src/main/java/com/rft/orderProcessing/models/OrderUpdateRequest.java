@@ -10,4 +10,8 @@ public class OrderUpdateRequest {
     String status;
 
     public OrderUpdateRequest() {}
+
+    public OrderUpdateRequest(String status) {
+        this.status = status;
+    }
 }
