@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: testdb
+    password: testdb
+
+jpa:
+  hibernate:
+    ddl-auto: create-drop
+    database-platform: org.hibernate.dialtect.H2Dialect
+
+sql:
+  init:
+    mode: never
+
+server:
+  port: 0
