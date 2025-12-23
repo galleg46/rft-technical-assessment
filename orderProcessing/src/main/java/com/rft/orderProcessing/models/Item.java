@@ -3,7 +3,7 @@ package com.rft.orderProcessing.models;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Items {
+public class Item {
 
     @Getter
     @Setter
@@ -12,4 +12,11 @@ public class Items {
     @Getter
     @Setter
     String quantity;
+
+    public Item() {}
+
+    public Item(String sku, String quantity) {
+        this.sku = sku;
+        this.quantity = quantity;
+    }
 }

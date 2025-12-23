@@ -13,5 +13,12 @@ public class Order {
 
     @Getter
     @Setter
-    List<Items> items;
+    List<Item> items;
+
+    public Order() {}
+
+    public Order(String customerId, List<Item> items) {
+        this.customerId = customerId;
+        this.items = items;
+    }
 }
