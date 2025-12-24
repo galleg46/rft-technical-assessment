@@ -11,6 +11,7 @@ import java.util.List;
 public class Order {
 
     @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
