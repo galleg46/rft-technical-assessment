@@ -32,6 +32,7 @@ public class OrderService {
         }
 
         try {
+
             com.rft.orderProcessing.domain.Order order = new com.rft.orderProcessing.domain.Order(
                     orderRequest.getCustomerId(),
                     orderRequest.getItems().stream()
@@ -46,18 +47,21 @@ public class OrderService {
             return new OrderResponse(
                     savedOrder.getOrderId().toString(),
                     savedOrder.getStatus().toString());
+
         } catch (Exception ex) {
             throw new OrderCreationException("Failed to create order");
         }
     }
 
     public OrderResponse getOrder(Long id) {
+
         com.rft.orderProcessing.domain.Order order = getOrderById(id);
 
         return new OrderResponse(order.getOrderId().toString(), order.getStatus().toString());
     }
 
     public OrderResponse updateOrderState(Long id, String request) {
+
         if (!isValidState(request)) {
             throw new InvalidOrderStateException(request);
         }
@@ -75,9 +79,12 @@ public class OrderService {
     }
 
     private boolean isValidState(String state) {
+
         try {
+
             OrderState.valueOf(state.toUpperCase());
             return true;
+
         } catch (IllegalArgumentException ex) {
             return false;
         }

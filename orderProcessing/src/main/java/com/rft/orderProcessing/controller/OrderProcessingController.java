@@ -29,9 +29,12 @@ public class OrderProcessingController {
 
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody Order request) {
+
         try {
+
             OrderResponse response = orderService.createOrder(request);
             return ResponseEntity.accepted().body(response);
+
         } catch (OrderCreationException ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
@@ -40,9 +43,12 @@ public class OrderProcessingController {
 
     @GetMapping(path = "/{orderId}")
     public ResponseEntity<?> getOrderStatus(@PathVariable Long orderId) {
+
         try {
+
             OrderResponse response = orderService.getOrder(orderId);
             return ResponseEntity.ok(response);
+
         } catch (OrderNotFoundException ex) {
             return ResponseEntity.ok(ex.getMessage());
         }
@@ -50,9 +56,12 @@ public class OrderProcessingController {
 
     @PatchMapping(path = "/{orderId}")
     public ResponseEntity<?> updateOrderState(@PathVariable Long orderId, @RequestBody OrderUpdateRequest request) {
+
         try {
+
             OrderResponse response = orderService.updateOrderState(orderId, request.getStatus());
             return ResponseEntity.ok(response);
+
         } catch (InvalidOrderStateException ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }

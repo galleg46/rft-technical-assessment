@@ -14,6 +14,7 @@ public class OrderEventPublisher {
     }
 
     public void publish (OrderCreatedEvent event) {
+
         rabbitTemplate.convertAndSend(
                 RabbitMQConfig.EXCHANGE,
                 RabbitMQConfig.ROUTING_KEY,

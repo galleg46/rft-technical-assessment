@@ -86,7 +86,7 @@ public class OrderServiceTests {
     }
 
     @Test
-    void creatOrder_throwsException_whenRepositoryFails() {
+    void createOrder_throwsException_whenRepositoryFails() {
 
         com.rft.orderProcessing.models.Order newOrderRequest = new com.rft.orderProcessing.models.Order(
                 "123",
@@ -112,10 +112,6 @@ public class OrderServiceTests {
     void getOrder_orderExists() {
 
         Long orderId = 1L;
-
-        OrderItem item1 = new OrderItem("ABC", "2");
-        List<OrderItem> items = new ArrayList<>();
-        items.add(item1);
 
         Order order = new Order(
                 "123",
@@ -157,11 +153,12 @@ public class OrderServiceTests {
         Long orderId = 1L;
         String newState = "PAID";
 
-        OrderItem item1 = new OrderItem("ABC", "2");
-        List<OrderItem> items = new ArrayList<>();
-        items.add(item1);
-
-        Order order = new com.rft.orderProcessing.domain.Order("123", items);
+        Order order = new com.rft.orderProcessing.domain.Order(
+                "123",
+                List.of(
+                    new OrderItem("ABC", "1"),
+                    new OrderItem("DEF", "4")
+                ));
         order.setOrderId(orderId);
         order.setStatus(OrderState.PENDING);
 
